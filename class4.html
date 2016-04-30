@@ -269,7 +269,7 @@ Yum, bananas!
         </section>
 
         <section>
-          <h3>Default Hash Parameter</h3>
+          <h3>Hash Parameter</h3>
           <pre><code contenteditable class="fragment ruby">
 def add_to_x_and_y(amount, vals)
   x = vals[:x]
@@ -291,17 +291,18 @@ add_to_x_and_y 2, y: 2, x: 1
         </section>
 
         <section>
-          <h3>Named Parameters</h3>
-          <p>To pass variable parameters, or to pass named parameters, you can use an options hash</p>
+          <h3>Optional Parameters</h3>
+          <p>You can use an options hash for default parameters. If it doesn't see the key, it provides the default value.</p>
           <pre><code contenteditable class="fragment ruby">
-bake("Wheat")
-bake("Sourdough", :flour => "sour")
-bake("Pumpernickel", :creamer => "butter")
+bake("Corey")
+bake("Alex", :flour => "sour")
+bake("Christina", :creamer => "butter")
 
-def bake(name, options = {})
+def bake( name = "Someone", options = {})
+  name = name
   flour = options[:flour] || "rye"
   creamer = options[:creamer] || "cream"
-  puts "baking a nice #{flour} loaf with #{creamer}"
+  puts "#{name} is baking a nice #{flour} loaf with #{creamer}"
 end
           </code></pre>
         </section>
