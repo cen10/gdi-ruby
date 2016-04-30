@@ -436,6 +436,25 @@ puts 'Pleased to meet you, ' + name + '. :)'
           </code></pre>
         </section>
         <section>
+          <h3>User Input Refactored</h3>
+          <ul>
+            <li class="fragment">We can make this code a little cleaner.</li>
+            <li class="fragment">Highlight your code in name.rb and press the command key and the '/' key (on Windows press the ctrl key and '/'). Then add the code below</li>
+            <li class="fragment">String interpolation allows you to take a variable that holds a string (name), and place it directly into another string without having to break the sentence up with plus signs. Note that now we're using double quotes!</li>
+          </ul>
+          </br>
+          <pre><code contenteditable class="fragment ruby">
+puts "Hello there, and what\'s your name?""
+name = gets.chomp!
+puts "Your name is #{name}? What a lovely name!""
+puts "Pleased to meet you, #{name}. :)""
+          </code></pre>
+          <p class="fragment">Run your program from the command line:</p>
+          <pre><code class="fragment">
+        ruby name.rb
+          </code></pre>
+        </section>
+        <section>
           <h3>Let's Develop It</h3>
           <ul>
             <li>Write your own program using 'puts' and 'gets' to ask a user for their age and then tell them how old they are in dog years.</li>
