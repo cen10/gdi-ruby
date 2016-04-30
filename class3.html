@@ -45,11 +45,11 @@
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-
+<!-- Opening slide -->
         <section>
-          <img src="images/gdi_logo_badge.png">
+          <img src = "img/gdi_logo_badge.png">
           <h3>Intro to Ruby</h3>
-          <h3>Class 3</h3>
+          <h4>Class 2</h4>
         </section>
 
         <section>
@@ -72,384 +72,673 @@
           <p>How was last week's homework? Do you have any questions or concepts that you'd like to discuss?</p>
         </section>
 
-        <section>
-          <h3>grandma.rb</h3>
-          <pre><code contenteditable class="ruby">
-chatting = true
-byes = 0
-while chatting
-  puts "Ask Grandma a question:"
-  said = gets.chomp!
-  if said == "BYE"
-    byes += 1
-    if byes > 2
-      chatting = false
-    else
-      puts "** Grandma is ignoring you **"
-    end
-  elsif said == said.upcase
-    year = 1930 + Random.rand(20)
-    puts "NO, NOT SINCE #{year}!"
-  else
-    puts "HUH?!  SPEAK UP, SONNY!"
-  end
-end
-puts "Thanks for chatting with Grandma"
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>leap.rb</h3>
-          <pre><code contenteditable class="ruby">
-puts "Enter a starting year in the format YYYY"
-starting = gets.chomp!.to_i
-puts "Enter an ending year in the format YYYY"
-ending = gets.chomp!.to_i
-puts "LEAP YEARS between #{starting} and #{ending}"
-
-starting.upto(ending) do |year|
-  divisible_by_4 = (year % 4) == 0
-  not_divisible_by_100 = (year % 100) != 0
-  divisible_by_400 = (year % 400) == 0
-  is_leap_year = (divisible_by_4 && not_divisible_by_100)
-                   || divisible_by_400
-  if is_leap_year
-    puts "#{year}"
-  end
-end
-          </code></pre>
-        </section>
-
+        <!-- Block 1 30 minutes -->
         <section>
           <h3>Review</h3>
           <ul>
-            <li class="fragment">Conditions - if, elsif, else</li>
-            <li class="fragment">Loops - while, for</li>
-            <li class="fragment">Arrays - [1,2,3] or %w(one two three)</li>
-            <li class="fragment">Hashes - {"one" => 1, "two" => 2}</li>
+              <li>Arithmetic and variables</li>
+              <li>Data types</li>
+              <li>Text editor, command line, and ruby shell</li>
           </ul>
         </section>
 
         <section>
           <h3>What we will cover today</h3>
           <ul>
-            <li class="fragment">Methods</li>
-            <li class="fragment">Objects</li>
-            <li class="fragment">Object Oriented Programming</li>
+              <li class ="fragment">Boolean Expressions and Conditionals</li>
+              <li class ="fragment">Loops</li>
+              <li class ="fragment">Collections</li>
           </ul>
         </section>
 
         <section>
-          <h3>Methods</h3>
-          <p>A <strong>method</strong> is a name for a chunk of code</p>
-          <p class="fragment">Methods are often used to define reusable behavior.</p>
-          <p class="fragment">Let's look at a method we've already used:</p>
-          <pre><code contenteditable class="fragment ruby">
-1.even?
-=> false
-
-"fred".capitalize
-=> "Fred"
-          </code></pre>
-          <p>If you have some code you want to reuse or organize, methods will help.</p>
-        </section>
-        <section>
-          <h3>Let's Develop It!</h3>
-          <p>Find the methods available on <a href="http://www.ruby-doc.org/core-2.1.0/String.html">String</a> and <a href="http://www.ruby-doc.org/core-2.1.0/Integer.html">Integer</a></p>
-          <p>Do they have any similar methods?</p>
-          <pre><code contenteditable class="fragment ruby">
-"abc".next
-=> "abd"
-
-"abz".next
-=> "aca"
-
-1.next
-=> 2
-
--1.next
-=> 0
-          </code></pre>
+          <h3>Booleans</h3>
+          <p>A <strong>boolean</strong> is a basic data type. It can have only two values: true or false.</p>
         </section>
 
         <section>
-          <h3>Write a Method</h3>
-          <p>Let's write a method together</p>
-          <p><strong>def</strong> means define</p>
-          <p><strong>subtract</strong> is the name of the method</p>
-          <p><strong>x, y</strong> are parameters</p>
-          <p><strong>x - y</strong> is the body of the method</p>
-          <p><strong>x - y</strong> is also the return value</p>
-          <pre><code contenteditable class="fragment ruby">
-def subtract x, y
-  x - y
-end
-        </code></pre>
-        </section>
-
-        <section>
-          <h3>Let's Develop It!</h3>
-          <p>Let's write a method that takes in a number and tells us if it is even.</p>
-          <p>Hint: if number % 2 == 0, then it is even</p>
-          <pre><code contenteditable class="fragment ruby">
-def method_name(parameter)
-  # method implementation
-end
-          </code></pre>
-        </section>
-
-
-        <section>
-          <h3>Method Return Value</h3>
-          <p>Every Ruby method returns something.</p>
-          <p>Usually, it's the last statement in the method.</p>
-          <p>It could be the value sent to <strong>return</strong> if that came first.</p>
-          <pre><code contenteditable class="fragment ruby">
-def subtract(x,y)
-  x - y
-  'another thing'
-end
-
-return_value = subtract(5, 2)
-puts return_value
-
-def subtract(x,y)
-  return x - y
-  'another thing'
-end
-
-return_value = subtract(5, 2)
-puts return_value
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Arguments vs. Parameters</h3>
-          <p>Technically speaking, arguments are passed and parameters are declared.</p>
-          <p>Note that the variable names don't have to match!</p>
-          <p>In this code, 5 is an argument and x is a parameter</p>
-          <pre><code contenteditable class="fragment ruby">
-def subtract(x,y)
-  x - y
-end
-
-subtract(5, 2)
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Splat Arguments</h3>
-          <pre><code contenteditable class="fragment ruby">
-def greet(greeting, *names)
-  names.each do |name|
-    puts "#{greeting}, #{name}!"
-  end
-end
-
->> greet("Hello", "Alice", "Bob", "Charlie")
-Hello, Alice!
-Hello, Bob!
-Hello, Charlie!
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Default Values</h3>
-          <pre><code contenteditable class="fragment ruby">
-def eat(food = "chicken")
-  puts "Yum, #{food}!"
-end
-
->> eat
-Yum, chicken!
-
->> eat "bananas"
-Yum, bananas!
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Default Hash Parameter</h3>
-          <pre><code contenteditable class="fragment ruby">
-def add_to_x_and_y(amount, vals)
-  x = vals[:x]
-  y = vals[:y]
-  x + y + amount
-end
-
-add_to_x_and_y(2, {:x => 1, :y => 2})
-
-# same as...
-add_to_x_and_y 2, :x => 1, :y => 2
-
-# same as...
-add_to_x_and_y 2, x: 1, y: 2
-
-# same as...
-add_to_x_and_y 2, y: 2, x: 1
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Named Parameters</h3>
-          <p>To pass variable parameters, or to pass named parameters, you can use an options hash</p>
-          <pre><code contenteditable class="fragment ruby">
-bake("Wheat")
-bake("Sourdough", :flour => "sour")
-bake("Pumpernickel", :creamer => "butter")
-
-def bake(name, options = {})
-  flour = options[:flour] || "rye"
-  creamer = options[:creamer] || "cream"
-  puts "baking a nice #{flour} loaf with #{creamer}"
-end
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Methods & Variables</h3>
-          <p><strong>Local vars</strong> are only available in the methods where they were defined.</p>
-          <pre><code contenteditable class="fragment ruby">
-# Let's extract the length of the padded string into
-# a local variable
-def message(our_string)
-  length = 80
-  puts our_string.center(length, "-")
-end
-
-def different_message(some_string)
-  puts our_string.center(length, "=")
-end
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Objects</h3>
-          <p>An <strong>Object</strong> is the building block of a program.</p>
-          <p class="fragment">Objects <strong>do things</strong> and have <strong>properties</strong>.</p>
-          <pre><code contenteditable class="fragment ruby">
-Object: Number
-What can it do?
-- Add
-- Subtract
-- Divide
-- Multiply
-
-What are some properties of your Number?
-- Length
-- Base
-- Even
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Object Class</h3>
-          <p><strong>Objects</strong> can be grouped by Class.</p>
-          <p class="fragment">Classes define a template for objects. They describe what a certain type of object can do and what
-            properties they have in common.
-          </p>
-          <p>There are many kinds of objects, including String, Number, Array, Hash, Time, ...</p>
-          <p>To create an object we use .new</p>
-          <pre><code contenteditable class="fragment ruby">
-array = []
-array = Array.new
-          </code></pre>
-          <p>now array refers to an object instance</p>
-        </section>
-
-        <section>
-          <h3>Object Methods</h3>
-          <p>Methods can be defined on objects.</p>
-          <pre><code contenteditable class="fragment ruby">
-array = Object.new
-
-def array.delete
-  puts "deleted the array"
-end
-
-array.methods(false)
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Instance Variables</h3>
-          <p>Represent object state</p>
-          <p>Names start with an @</p>
-          <p>Only visible inside the object</p>
-          <pre><code contenteditable class="fragment ruby">
-cookie = Object.new
-
-def cookie.add_chips(num_chips)
-  @chips = num_chips
-end
-
-def cookie.yummy?
-  @chips > 100
-end
-
-cookie.add_chips(500)
-cookie.yummy?   #=> true
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Object Oriented Programming</h3>
+          <h3>Boolean Expressions</h3>
+          <p>Code that compares values and returns True or False is called a <strong>Boolean expression</strong></p>
           <ul>
-            <li class="fragment">Object Oriented Programming is one of many <strong>programming approaches</strong>: procedural, event-driven, functional,
-              declarative...
-            </li>
-            <li class="fragment">These days, most programming is done in an OO language: Java, C#, C++.</li>
-            <li class="fragment">All this means is that programs are <strong>organized around objects</strong> (data & methods).</li>
-            <li class="fragment">You might choose OOP because Objects make things <strong>easier to understand</strong> and act as a natural way to modularize code.
-              When a large code base is composed of many small Objects, it is <strong>easier to maintain</strong> and change.
-            </li>
+              <li>Test for equality by using `==`. We can't use `=` because that is used for assignment</li>
+              <li>Test for greater than and less than using `&gt;` and `&lt;`</li>
           </ul>
         </section>
 
         <section>
-          <h3>OOP & Easy Understanding</h3>
-          <p>Objects often take on names from their domain which makes them easy to conceptualize.</p>
-          <p>For example, without seeing my code, you can probably guess what a Bike object can do (or not do)</p>
+          <h3>Boolean Expressions cheat sheet</h3>
+          <table>
+              <tr>
+                  <td>a == b</td>
+                  <td>a is equal to b</td>
+              </tr>
+              <tr>
+                  <td>a != b</td>
+                  <td>a does not equal b</td>
+              </tr>
+              <tr>
+                  <td>a &lt; b</td>
+                  <td>a is less than b</td>
+              </tr>
+              <tr>
+                  <td>a &gt; b</td>
+                  <td>a is greater than b</td>
+              </tr>
+              <tr>
+                  <td>a &lt;= b</td>
+                  <td>a is less than or equal to b</td>
+              </tr>
+              <tr>
+                  <td>a &gt;= b</td>
+                  <td>a is greater than or equal to b</td>
+              </tr>
+            </table>
+            <p>Learn more about logical operators in Ruby <a href="http://www.tutorialspoint.com/ruby/ruby_operators.htm" alt="Operators tutorial">here</a>.</p>
+          </section>
+
+          <section>
+            <h3>Boolean Expressions practice</h3>
+            <pre><code  class="ruby">
+a = 3
+b = 4
+puts a != b
+puts a <= 3
+puts a >= 4
+a = 5
+b = 5
+puts a == b
+c = a == b # Combine comparison and assignment
+puts c
+puts 3 &lt; 5
+            </code></pre>
+            <p>Remember: Equals does not equal "equals equals"</p>
+            <p> <a href="http://ruby.learncodethehardway.org/book/ex27.html">Further reading </a> on boolean expressions...</p>
         </section>
 
         <section>
-          <h3>OOP & Encapsulation</h3>
-          <p>One thing that makes code easier to maintain is Encapsulation which is one of the fundamentals of OOP.</p>
-          <p><strong>Encapsulation</strong> is a nice way of saying 'put all my properties/behaviors in my capsule where other
-            objects can't touch them'.
-          </p>
-          <p>By assigning certain responsibilities to objects, code is more purposeful and less likely to be changed by
-            accident.
-          </p>
+          <h3>Boolean Expressions</h3>
+          <p>A boolean expression evaluates to true or false. It can also have multiple parts, joined by AND (&&) or OR (||).</p>
+          <table>
+            <tr>
+              <th>EXPRESSION</th>
+              <th>EVALUATES TO</th>
+            </tr>
+            <tr>
+              <td>true && true</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>true && false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>false && false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>true || true</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>true || false</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>false || false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>not (true && false)</td>
+              <td>true</td>
+            </tr>
+          </table>
+          <p> <a href="http://ruby.learncodethehardway.org/book/ex28.html">Further practice </a> on boolean expressions...</p>
         </section>
 
         <section>
-          <h3>OOP & Inheritance</h3>
-          <p>Just as you inherited traits from your mom, your objects may inherit traits from other objects.</p>
-          <p><strong>Inheritance</strong> is when you use one class as the basis for another.</p>
-          <p>You might use Inheritance if two objects have the same properties and methods. This way you don't need to write the
-            same thing twice.
-          </p>
-          <pre><code contenteditable class="fragment ruby">
-class MyString < String
-end
-
-my_string = MyString.new
-my_string.upcase
+          <h3>Let's Develop It</h3>
+          <p>Take a few minutes and experiment with boolean expressions in IRB. You can start with the examples below.</p>
+          <pre><code class="ruby">
+true && false
+1 == 1 && 2 > 37
+"boop" == "bip" || 7 == 8
+false || true
+89 > 88 || 89 < 90
+true || not(1 == 1 || 2 == 65)
           </code></pre>
         </section>
 
         <section>
-          <h3>OOP & Polymorphism</h3>
+          <h3>Putting Booleans to Work</h3>
+          <p>So, what's the value of knowing if a statement is true or false? Often, you'll use that to control whether a piece of code will execute or not.</p>
+
+          <pre><code  class="ruby">
+user_guess = gets.chomp.to_i
+secret_number = 312
+
+if user_guess < secret_number
+puts "Too low!"
+elsif user_guess > secret_number
+puts "Too high!"
+else
+puts "You guessed it. Wow maybe you're psychic...."
+end
+          </code></pre>
+          <p>Can you tell what this code does?</p>
+        </section>
+
+        <section>
+          <h3>Conditionals</h3>
+          <p>When we want different code to execute depending on certain criteria, we use a <strong>conditional</strong></p>
+          <p>We achieve this using <strong>if</strong> statements and boolean expressions.</p>
+          <pre><code  class="fragment ruby">
+if x == 5
+puts 'x is equal to 5'
+end
+          </code></pre>
+          </section>
+          <section>
+          <h3>Conditionals</h3>
+          <p>We often want a different block to execute if the statement is false. This can be accomplished using <strong>else</strong>.</p>
+          <pre><code  class="fragment ruby">
+if x == 5
+puts 'x is equal to 5'
+else
+puts 'x is not equal to 5'
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Conditionals</h3>
+          <p>The following shows some examples of conditionals with more complex boolean expressions:</p>
+          <pre><code  class="ruby">
+# And
+if x > 3 && y > 3
+puts 'Both values are greater than 3'
+end
+
+# Or
+if x != 0 || y != 0
+puts 'The point x,y is not on the x or y axis'
+end
+
+# Not
+if not(x > y)
+puts 'x is less than y'
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Chained conditionals</h3>
+          <p>Conditionals can also be <strong>chained</strong>.</p>
+          <p>Chained conditionals use <strong>elsif</strong> to test if additional statements are true. The single 'else' action will only happen if all preceding conditions are false.</p>
+
+          <p>For example:</p>
+          <pre><code  class="fragment ruby">
+if x > 10
+puts "x is greater than 10"
+elsif x <= 10 && x > 0
+puts "x is a number between 1 and 10"
+else
+puts "Wow, don't be so negative, dude"
+end
+          </code></pre>
+        </section>
+
+
+<!-- Let's develop it: 10 minutes  -->
+        <section>
+          <h3>Let's Develop It</h3>
+          <p>Write a program in your text editor that uses conditionals and user input to allow the user to play an adventure game.</p>
+          <p>"gets.chomp" is the value of user input at the command line, with the trailing whitespace chomped off. To do math with it, convert it to an integer with the ".to_i" method</p>
+          <pre><code>
+            input = gets.chomp.to_i
+          </code></pre>
+          <p>Run your program by calling it with Ruby from the command line.</p>
+          <pre><code>
+            $ ruby program_name.rb
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Let's Develop It Example</h3>
+          <pre><code class="ruby">
+# adventure.rb
+puts "A vicious dragon is chasing you!"
+puts "Options:"
+puts "1 - Hide in a cave"
+puts "2 - Climb a tree"
+
+input = gets.chomp
+
+if input == '1'
+puts "You hide in a cave. The dragon finds you and asks if you'd like to play Scrabble. Maybe it's not so vicious after all!"
+elsif input == '2'
+puts "You climb a tree. The dragon can't find you."
+else
+puts "That's not a valid option."
+end
+          </code></pre>
+          <pre><code class="ruby">
+
+#command line
+ruby dragon.rb
+          </code></pre>
+        </section>
+
+        <!-- Block 2 25 minutes -->
+        <section>
+          <h3>Loops</h3>
+          <p>It is often useful to perform a task and to repeat the process until a certain point is reached.</p>
+          <p>The repeated execution of a set of statements is called <strong>iteration</strong>, or, more commonly, a loop.</p>
+          <p>One way to achieve this, is with the <strong>while</strong> loop.</p>
+          <pre><code  class="ruby">
+x = 10
+
+while x > 0
+puts "Loop number #{x}"
+x = x - 1
+end
+
+puts 'Done'
+            </code></pre>
+        </section>
+        <section>
+          <h3>While Loops</h3>
+          <pre><code  class="ruby">
+x = 10
+
+while x > 0
+puts "Loop number #{x}"
+x = x - 1
+end
+          </code></pre>
+          <p>The while statement takes a condition, and as long as it evaluates to true, the code block beneath it is repeated. This creates a <strong>loop</strong>.</p>
+          <p> Without the `x = x - 1` statement, to increment the value of x, this would be an <strong>infinite loop</strong> :( :( :(</p>
+        </section>
+
+        <section>
+          <h3>While loops</h3>
+          <p>Consider the following example that uses a while loop to sing you a song.</p>
+          <pre><code  class="fragment ruby">
+num_bottles = 99
+
+while num_bottles > 0
+puts "#{num_bottles} bottles of beer on the wall,
+#{num_bottles} bottles of beer, take one down, pass it
+around, #{num_bottles - 1} bottles of beer on the wall!"
+
+num_bottles = num_bottles - 1
+end
+          </code></pre>
+          <p>"#{num_bottles}" is an example of <strong>string interpolation</strong></p>
+        </section>
+
+        <!-- Let's Develop It - 10 minutes -->
+        <section>
+          <h3>Let's Develop It</h3>
           <ul>
-          <li>Similar to inherited traits and behaviors, there are also polymorphic traits and behaviors.</li>
-          <li><strong>Polymorphic</strong> means many forms.</li>
-          <li>Within OOP, this relates to different objects being able to respond to the same message in different ways.</li>
+            <li>Write a program that obtains user input like the last program</li>
+            <li>This program should not exit until the user says it should (maybe by entering "quit"?)</li>
+            <li>Use a loop!</li>
+            <li>You can use the next slide as an example.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Let's Develop It: Example</h3>
+          <pre><code>
+# loopy.rb
+loopy = true
+
+while loopy == true
+puts "Are we having fun yet?"
+puts "Answer 'true' or 'false'."
+user_input = gets.chomp
+if user_input == 'false'
+loopy = false
+end
+end
+          </code></pre>
+          <p>Learn more about loops in Ruby <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" alt="Loops tutorial">here</a>.</p>
+        </section>
+
+          <section>
+            <h3>Each loops</h3>
+            <p>The most commonly used type of loop in Ruby is an each loop. It uses the <strong>.each</strong> method to iterate over a collection of elements, doing work to each one.</p>
+
+            <p>First, we need a collection. We use a <strong>range</strong> of numbers to loop over.</p>
+            <pre><code  class="fragment ruby">
+(0..5).each do |i|
+puts "Value of i is #{i}"
+end
+            </code></pre>
+
+          </section>
+
+          <section>
+            <h3>Each loops</h3>
+            <pre><code  class="ruby">
+(0..5).each do |i|
+puts "Value of i is #{i}"
+end
+            </code></pre>
+            <p>The loop has three parts:</p>
+            <ul>
+              <li>The collection that will be looped through, in this case a range- "(0..5)"</li>
+              <li>The name to give each element when the loop begins again - "i" - in the pipes "| |" </li>
+              <li>The code to execute with the element - the puts statement</li>
             </ul>
-          <pre><code contenteditable class="fragment ruby">
-[1, "abc"].each {|object| puts object.next}
+            <p>We will revisit the each loop when we have a better understanding of collections.</p>
+          </section>
+
+
+        <!-- Block 3 30 minutes -->
+        <section>
+          <h3>Collections</h3>
+          <p>There are three main types:</p>
+          <ul>
+            <li>Ranges</li>
+            <li>Arrays</li>
+            <li>Hashes</li>
+          </ul>
+          <pre><code  class="fragment ruby">
+new_range = (1..10)
+
+new_array = [1, 3, 5]
+
+new_hash = {"dog" => "snoopy", "bird" => "woodstock"}
           </code></pre>
         </section>
+
+        <section>
+          <h3>Ranges</h3>
+          <pre><code class="ruby">
+inclusive_range = (1..3)  # contains 1, 2, 3
+exclusive_range = (1...3) # contains 1, 2
+letter_range = ('a'..'e') # contains 'a', 'b', 'c', 'd', 'e'
+          </code></pre>
+          <p>Ranges are simply the range of values between the given first and last elements.</p>
+          <p><strong>Inclusive</strong> ranges have two dots, and include the last element. <strong>Exclusive</strong> ranges have three dots, and do not include the last element.</p>
+        <!--TODO is this right?-->
+          <p>Ranges need to be defined from lowest value to highest.</p>
+        </section>
+
+        <section>
+          <h3>Ranges</h3>
+          <p>Try out these range methods in IRB.</p>
+          <pre><code>
+(1..99).max
+('b'...'z').include?('j')
+(890..902).begin
+(890..902).first(4)
+(890..902).last(3)
+(890..902).end
+(28..22).min
+
+('a'...'g').each do |l|
+puts "#{l} is a pretty good letter"
+end
+
+(22..28).to_a
+          </code></pre>
+          <p>Learn more about ranges <a href="http://www.ruby-doc.org/core-2.1.1/Range.html" alt="Ruby Doc">here</a>.</p>
+        </section>
+
+        <section>
+          <h3>Arrays</h3>
+          <p>Arrays have square brackets and can be filled with any type of object: integers, floats, strings, even other arrays or hashes.</p>
+          <pre><code  class="fragment ruby">
+new_array = [1, 3, 5, 89, 212, 7, -100]
+arr = ["wow", "woooo", "zowie"]
+array = Array.new #will have no elements inside it initially
+varied_array = ["one", 2, "THREE", 0.4, ["five", 6]]
+
+# methods to get information about an array
+new_array.length
+new_array.count
+arr.include?("yee ha")
+          </code></pre>
+          <p>Arrays are a great way to keep track of information that changes frequently.</p>
+          </section>
+
+          <section>
+          <h3>Accessing Elements in an Arrays</h3>
+          <p>Arrays are <strong>ordered</strong> and are <strong>integer-indexed</strong>, starting at 0. </p>
+          <p>Elements can be accessed by their position.</p>
+
+          <pre><code  class="fragment ruby">
+new_array = [1, 3, 5, 89, 212, 7, -100]
+arr = ["wow", "woooo", "zowie"]
+
+new_array[0]    # returns the zeroth element
+arr[2]          # returns the third element
+arr[-1]         # returns the last (1st from the end) element
+new_array.last  # returns the last element
+new_array[1..2] # returns the second and third elements
+arr.first       # returns the first element
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Adding & Deleting From Arrays</h3>
+          <p>Adding and removing items to an array can be done in a variety of ways. These are the most common.</p>
+          <pre><code  class="ruby">
+arr = ["wow", "woooo", "zowie"]
+
+#add
+arr.push("hot diggity") # adds argument as last element
+arr << "yikes"          # adds argument as last element
+
+#remove
+arr.delete("wow")       # deletes the element that matches argument
+arr.pop                 # removes and returns the last element
+          </code></pre>
+        </section>
+
+
+        <section>
+          <h3>More Array Methods</h3>
+          <p>Arrays are used a lot in Ruby. There are a lot of cool methods available for them. </p>
+          <pre><code  class="fragment ruby">
+arr = ["dog", "cat", "turtle", "parakeet", "ferret"]
+
+arr.index("dog")  # returns the index of the element that matches argument
+arr.join          # returns a string made up of all the elements
+arr.clear         # removes all elements from the array
+arr.reverse       # returns new array with same elements, reversed
+arr.shuffle       # returns new array with same elements, shuffled
+arr.uniq          # returns a new array with only unique elements
+arr.size          # returns the number of elements in the array
+arr.empty?        # returns a boolean
+          </code></pre>
+          <p>Learn more about arrays <a href="http://www.ruby-doc.org/core-2.1.0/Array.html" alt="ruby documentation - array class">here</a>.</p>
+        </section>
+
+<!-- minutes-->
+        <section>
+          <h3>Hashes</h3>
+          <p>Hashes have curly braces and hash rockets and can be filled with any data type: integers, floats, strings, even arrays and hashes. </p>
+          <pre><code  class="fragment ruby">
+grades_hash = { "Jane Doe" => 10, "Jim Doe" => 6, "Jan Doe" => 8}
+new_hash = { 1 => "a", "d" => 12, "f" => 35 }
+
+# methods to find information about hashes
+new_hash.length
+grades_hash.count
+grades_hash.size
+grades_hash.has_key?("Jan Doe")
+new_hash.has_value?(35)
+
+          </code></pre>
+          <p>Syntax:</p>
+          <p>{ key => value, key => value }
+        </section>
+
+        <section>
+          <h3>Accessing Elements in Hashes</h3>
+          <p>Hashes are <strong>unordered.</strong> Hashes are like dictionaries, with unique <strong>key / value</strong> pairs.</p>
+          <p>Because hashes can have any type of object as an idex, and are unordered, we must access values by their <strong>key</strong>.</p>
+          <pre><code  class="fragment ruby">
+grades_hash = { "Jane Doe" => 10, "Jim Doe" => 6, "Jan Doe" => 8}
+new_hash = { 1 => "a", "d" => 12, "f" => 35 }
+
+grades_hash["Jane Doe"]   # returns 10, the value of this key
+new_hash["d"]             # returns 12, the value of this key
+grades_hash.first         # returns first key/value pair... probably
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Adding & Removing from Hashes</h3>
+          <pre><code  class="ruby">
+new_hash = { 1 => "a", "d" => 12, "f" => 35 }
+
+# add
+new_hash["z"] = 43   # adds a new key/value pair "z" => 43
+
+#remove
+new_hash.delete("d") # removes key/value pair with specified key
+new_hash.clear       # removes all key/value pairs
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>More Hash methods</h3>
+          <pre><code  class="ruby">
+chapters = {"My Early Home" => (1..15), "The Hunt" => (16..28),
+        "My Breaking In" => (29..46), "Birtwick Park" => (46..60)}
+
+chapters.count      # returns number of key/value pairs in hash
+chapters.keys       # returns an array of all the keys in hash
+chapters.has_key?("How It Ended")  # returns a boolean
+chapters.to_a       # converts hash to an array of arrays
+chapters.invert     # returns new hash with old one's values
+                  # as keys and keys as values
+            </code></pre>
+            <p>Learn more about hashes <a href="http://www.ruby-doc.org/core-2.1.1/Hash.html" alt="Ruby Docs">here</a>.</p>
+        </section>
+
+        <section>
+          <h3>Enumerable</h3>
+          <p><strong>Arrays</strong> and <strong>Hashes</strong> are both members of the <strong>Enumerable</strong> class. There are a lot of cool methods available for Enumerable, including <strong>each</strong>. </p>
+
+        <!-- <p>Learn more about the methods available to Enumerable <a href="http://www.ruby-doc.org/core-2.1.1/Enumerable.html" alt="Ruby Docs">here</a>.</p> -->
+        </section>
+
+        <section>
+          <h3>.each with Ranges</h3>
+          <p>This is the simplest!</p>
+          <pre><code class="ruby">
+(3..8).each do |n|
+puts n * 4
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>.each with Arrays</h3>
+          <p>Can be simple or more complex, depending on the array.</p>
+          <pre><code class="ruby">
+pets_array = ["dog", "cat", "turtle", "parakeet", "ferret"]
+
+pets_array.each do |p|
+puts "I like #{p}s!!"
+end
+
+
+deep_array = [["mountain", "desert"], ["ocean", "sky"]]
+
+deep_array.each do |p|
+puts "I like #{p.first}s!!"  # each element is also an array
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>.each with Hashes</h3>
+          <p>Each element has a key and value that needs to be dealt with.</p>
+          <pre><code class="ruby">
+grades_hash = { "Jane Doe" => 10, "Jim Doe" => 6, "Jan Doe" => 8}
+
+grades_hash.each do |key, value|
+puts "#{key}'s grade is #{value}"
+end
+          </code></pre>
+        </section>
+
+        <!-- Let's develop it: 10 minutes -->
+        <section>
+          <h3>Let's Develop It</h3>
+
+          <p>Write a program that prints out every number between 1 and 1000 that is divisible by 7.</p>
+          <br />
+          <p>Hint: the modulo operator, %, will be helpful.</p>
+        </section>
+
+        <section>
+          <h3>Enumerable</h3>
+          <p>Visit <a href="https://gist.github.com/cherimarie/11004115" alt="Gist with pets array">this page</a> and copy the contents of the Gist to a local file. Save it as pets.rb. We'll work with it together in IRB.</p>
+        </section>
+
+        <section>
+          <h3>Enumerable: Reduce</h3>
+          <p>Returns the product of running the operator on all elements of the enumerable.</p>
+          <pre><code class="ruby">
+(1..4).reduce(:*)   # returns 1 * 2 * 3 * 4
+(1...5).reduce(:+)  # returns 1 + 2 + 3 + 4
+(2...5).reduce(:**) # returns 2 ** 3 ** 4
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Enumerable: Collect and Map</h3>
+          <p>Returns an array with the results of running the block on each element. Can be used interchangably.</p>
+          <pre><code class="ruby">
+$pets.collect{|p| p[:name]}      # returns array of all pet names
+$pets.collect{|p| p[:legs]}.reduce(:+) # returns sum of all pet legs
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Enumerable: Reject</h3>
+          <p>Returns an array with all elements that did not meet the critera in code block.</p>
+          <pre><code class="ruby">
+$pets.reject{|p| p[:talents].include? "napping" }
+  # returns array of pets whose talents do not include napping
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Let's Develop It</h3>
+          <p>How many of our pets are nocturnal?</p>
+        </section>
+
+          <section>
+            <h3>Let's Develop It- Sample Code</h3>
+            <p>How many of our pets are nocturnal?</p>
+            <pre><code class="ruby">
+$pets.reject{|p| p[:nocturnal]== false}.count
+            </code></pre>
+          </section>
+
+<!--
+        <section>
+            <h3>Nil</h3>
+            <p class="fragment">Nil is an <strong>object</strong>! Try the following in IRB:</p>
+            <pre><code  class="fragment ruby">
+nil.class
+nil.to_a
+nil.to_i
+nil.to_s
+nil.size
+            </code></pre>
+            <p class="fragment">There are some methods associated with nil, like .to_a, to help prevent errors in your code. If you try to call .to_a on something without first setting the value of it, you'll get an empty array instead of an error.</p>
+
+
+            <p>Learn more about the nil class <a href="http://www.ruby-doc.org/core-2.1.0/NilClass.html" alt="ruby documentation - nil class">here</a>.</p>
+        </section> -->
 
         <section>
           <h3>Questions?</h3>
@@ -457,9 +746,10 @@ my_string.upcase
 
         <section>
           <h3>Homework</h3>
-          <p><strong>Practice:</strong> Do some of the exercises at the end of <a href="http://pine.fm/LearnToProgram/?Chapter=08" alt="Chp 8 of Learn to Program">Chapter 8</a> of Learn to Program.</p>
-          <p><strong>Prep:</strong> Read <a href="http://pine.fm/LearnToProgram/?Chapter=09" alt="Chp 9 of Learn to Program">Chapter 9</a> of Learn To Program- don't try to do the exercises at the end yet, though.</p>
+          <p><strong>Practice:</strong> Find two interesting methods for Enumerable (via <a href="http://www.ruby-doc.org/core-2.1.1/Enumerable.html" alt="Ruby Docs">Ruby Docs</a>) and write a little program that uses them for arrays or hashes. Do any one the exercises at the end of <a href="http://pine.fm/LearnToProgram/?Chapter=06" alt="Chp 6 of Learn to Program">Chapter 6</a> of Learn to Program.</p>
+          <p><strong>Prep:</strong> Read <a href="http://pine.fm/LearnToProgram/?Chapter=08" alt="Chp 8 of Learn to Program">Chapter 8</a> of Learn To Program- don't try to do the exercises at the end yet, though.</p>
         </section>
+
       </div>
       <footer>
         <div class="copyright">
