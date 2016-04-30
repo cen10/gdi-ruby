@@ -217,11 +217,11 @@ user_guess = gets.chomp.to_i
 secret_number = 312
 
 if user_guess < secret_number
-puts "Too low!"
+  puts "Too low!"
 elsif user_guess > secret_number
-puts "Too high!"
+  puts "Too high!"
 else
-puts "You guessed it. Wow maybe you're psychic...."
+  puts "You guessed it. Wow maybe you're psychic...."
 end
           </code></pre>
           <p>Can you tell what this code does?</p>
@@ -233,7 +233,7 @@ end
           <p>We achieve this using <strong>if</strong> statements and boolean expressions.</p>
           <pre><code  class="fragment ruby">
 if x == 5
-puts 'x is equal to 5'
+  puts 'x is equal to 5'
 end
           </code></pre>
           </section>
@@ -242,9 +242,9 @@ end
           <p>We often want a different block to execute if the statement is false. This can be accomplished using <strong>else</strong>.</p>
           <pre><code  class="fragment ruby">
 if x == 5
-puts 'x is equal to 5'
+  puts 'x is equal to 5'
 else
-puts 'x is not equal to 5'
+  puts 'x is not equal to 5'
 end
           </code></pre>
         </section>
@@ -255,17 +255,17 @@ end
           <pre><code  class="ruby">
 # And
 if x > 3 && y > 3
-puts 'Both values are greater than 3'
+  puts 'Both values are greater than 3'
 end
 
 # Or
 if x != 0 || y != 0
-puts 'The point x,y is not on the x or y axis'
+  puts 'The point x,y is not on the x or y axis'
 end
 
 # Not
 if not(x > y)
-puts 'x is less than y'
+  puts 'x is less than y'
 end
           </code></pre>
         </section>
@@ -278,11 +278,11 @@ end
           <p>For example:</p>
           <pre><code  class="fragment ruby">
 if x > 10
-puts "x is greater than 10"
+  puts "x is greater than 10"
 elsif x <= 10 && x > 0
-puts "x is a number between 1 and 10"
+  puts "x is a number between 1 and 10"
 else
-puts "Wow, don't be so negative, dude"
+  puts "Wow, don't be so negative, dude"
 end
           </code></pre>
         </section>
@@ -314,11 +314,11 @@ puts "2 - Climb a tree"
 input = gets.chomp
 
 if input == '1'
-puts "You hide in a cave. The dragon finds you and asks if you'd like to play Scrabble. Maybe it's not so vicious after all!"
+  puts "You hide in a cave. The dragon finds you and asks if you'd like to play Scrabble. Maybe it's not so vicious after all!"
 elsif input == '2'
-puts "You climb a tree. The dragon can't find you."
+  puts "You climb a tree. The dragon can't find you."
 else
-puts "That's not a valid option."
+  puts "That's not a valid option."
 end
           </code></pre>
           <pre><code class="ruby">
@@ -338,8 +338,8 @@ ruby dragon.rb
 x = 10
 
 while x > 0
-puts "Loop number #{x}"
-x = x - 1
+  puts "Loop number #{x}"
+  x = x - 1
 end
 
 puts 'Done'
@@ -351,8 +351,8 @@ puts 'Done'
 x = 10
 
 while x > 0
-puts "Loop number #{x}"
-x = x - 1
+  puts "Loop number #{x}"
+  x = x - 1
 end
           </code></pre>
           <p>The while statement takes a condition, and as long as it evaluates to true, the code block beneath it is repeated. This creates a <strong>loop</strong>.</p>
@@ -366,11 +366,11 @@ end
 num_bottles = 99
 
 while num_bottles > 0
-puts "#{num_bottles} bottles of beer on the wall,
-#{num_bottles} bottles of beer, take one down, pass it
+  puts "#{num_bottles} bottles of beer on the wall,
+  #{num_bottles} bottles of beer, take one down, pass it
 around, #{num_bottles - 1} bottles of beer on the wall!"
 
-num_bottles = num_bottles - 1
+  num_bottles = num_bottles - 1
 end
           </code></pre>
           <p>"#{num_bottles}" is an example of <strong>string interpolation</strong></p>
@@ -393,12 +393,12 @@ end
 loopy = true
 
 while loopy == true
-puts "Are we having fun yet?"
-puts "Answer 'true' or 'false'."
-user_input = gets.chomp
-if user_input == 'false'
-loopy = false
-end
+  puts "Are we having fun yet?"
+  puts "Answer 'true' or 'false'."
+  user_input = gets.chomp
+  if user_input == 'false'
+    loopy = false
+  end
 end
           </code></pre>
           <p>Learn more about loops in Ruby <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" alt="Loops tutorial">here</a>.</p>
@@ -411,7 +411,7 @@ end
             <p>First, we need a collection. We use a <strong>range</strong> of numbers to loop over.</p>
             <pre><code  class="fragment ruby">
 (0..5).each do |i|
-puts "Value of i is #{i}"
+  puts "Value of i is #{i}"
 end
             </code></pre>
 
@@ -421,7 +421,7 @@ end
             <h3>Each loops</h3>
             <pre><code  class="ruby">
 (0..5).each do |i|
-puts "Value of i is #{i}"
+  puts "Value of i is #{i}"
 end
             </code></pre>
             <p>The loop has three parts:</p>
@@ -478,7 +478,7 @@ letter_range = ('a'..'e') # contains 'a', 'b', 'c', 'd', 'e'
 (28..22).min
 
 ('a'...'g').each do |l|
-puts "#{l} is a pretty good letter"
+  puts "#{l} is a pretty good letter"
 end
 
 (22..28).to_a
@@ -632,7 +632,7 @@ chapters.invert     # returns new hash with old one's values
           <p>This is the simplest!</p>
           <pre><code class="ruby">
 (3..8).each do |n|
-puts n * 4
+  puts n * 4
 end
           </code></pre>
         </section>
@@ -644,14 +644,14 @@ end
 pets_array = ["dog", "cat", "turtle", "parakeet", "ferret"]
 
 pets_array.each do |p|
-puts "I like #{p}s!!"
+  puts "I like #{p}s!!"
 end
 
 
 deep_array = [["mountain", "desert"], ["ocean", "sky"]]
 
 deep_array.each do |p|
-puts "I like #{p.first}s!!"  # each element is also an array
+  puts "I like #{p.first}s!!"  # each element is also an array
 end
           </code></pre>
         </section>
@@ -663,7 +663,7 @@ end
 grades_hash = { "Jane Doe" => 10, "Jim Doe" => 6, "Jan Doe" => 8}
 
 grades_hash.each do |key, value|
-puts "#{key}'s grade is #{value}"
+  puts "#{key}'s grade is #{value}"
 end
           </code></pre>
         </section>
